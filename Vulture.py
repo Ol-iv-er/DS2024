@@ -9,6 +9,8 @@ Created on Mon Aug 12 23:50:37 2024
 ## Vulture find unused code and dead code
 
 import os
+import time
+import numpy as np
 
 class Greeter():
     def greet(self):
