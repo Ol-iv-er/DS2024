@@ -5,4 +5,5 @@ def welcome(name: str) -> None: # the use of : and -> are for type hinting, leti
 age = 24
 name = input("Please enter your name: ").lower()
 
+
 welcome(name)

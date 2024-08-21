@@ -5,5 +5,5 @@ app=Flask(__name__)
 def welcome():
     return "Welcome to my first Flask App"
 
-if __name__ =='__main__':
+if __name__ == '__main__':
     app.run()
