@@ -15,5 +15,9 @@ def welcome():
 def cool():
     return 'Welcome special people to the next page'
 
+@app.route('/secrete')
+def secrete_msg():
+    return "This is secrete page, so welcome!"
+
 if __name__ == '__main__':
     app.run(debug=True) # debug allows you to update more easily when the page is refreshed
