@@ -10,16 +10,6 @@ app=Flask(__name__)
 def welcome():
     return render_template('index.html')
 
-@app.route('/cool')
-def cool():
-    return 'Welcome special people to the next page'
-
-@app.route('/secret')
-def secrete_msg():
-    return "This is secret page, so welcome!"
-
-
-
 @app.route('/success/<int:score>') 
 def success(score):
     return render_template()
