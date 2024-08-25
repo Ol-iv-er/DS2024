@@ -18,8 +18,13 @@ def welcome():
 
 @app.route('/success/<int:score>') 
 def success(score):
-
-    return render_template("results.html", result = score)
+    res = ""
+    if score >= 70:
+        res = "PASS"
+    else:
+        res = "FAIL"
+    exp = {"Score": score, "Result":res}
+    return render_template("results.html", result = exp)
 
 @app.route('/fail/<int:score>')
 def fail(score):

@@ -3,10 +3,15 @@
 
 <html>
     <body>
-        {% if result >= 70 %}
-        <h2>Your result is Passed!</h2>
-        {% else %}
-        <h2>Your result is Failed, better luck next time.</h2>
-        {% endif %} {# You have to use the "endif" when using if statements so we know when to close condition#}
+        <table border = 2>
+            {# This will create a table with each key vale pair as row#}
+            {% for key, value in result.items() %}
+            <tr>
+                <th>{{ key }}</th> <th>{{ value }}</th>
+            </tr>
+            {% endfor %} <!-- Remember to close for loop {# endfor #}-->
+        </table>
+        
+
     </body>
 </html>
