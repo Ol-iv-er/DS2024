@@ -2,8 +2,11 @@
 <h2>Final Results</h2>
 
 <html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
     <body>
-        <table border = 2>
+        <table>
             {# This will create a table with each key vale pair as row#}
             {% for key, value in result.items() %}
             <tr>
