@@ -1,6 +1,12 @@
 ### Integrate HTML with FLask (Jinja2 Techniques: seperate data source you can integrate with HTML)
 ### HTTP verb GET and POST
 
+## Jinja2 template
+'''
+{%...%} any conditions, for loops and statements
+{{ output }} expression to print output variable
+{#...#} this is for comments for html code but does not show on the web page
+'''
 from flask import Flask, redirect, url_for, render_template, request
 
 
@@ -12,12 +18,8 @@ def welcome():
 
 @app.route('/success/<int:score>') 
 def success(score):
-    res = ""
-    if score >= 50:
-        res = "PASS"
-    else:
-        res = "FAIL"
-    return render_template("results.html", result = res)
+
+    return render_template("results.html", result = score)
 
 @app.route('/fail/<int:score>')
 def fail(score):
