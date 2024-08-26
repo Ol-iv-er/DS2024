@@ -45,7 +45,7 @@ def results(marks):
 @app.route('/submit', methods =['POST', 'GET'])
 def submit():
     total_score = 0
-    if request.method == 'POST':
+    if request.method == 'POST': #Whenever the submit button is pressed this is triggered
         science = float(request.form['science'])
         maths = float(request.form['maths'])
         c = float(request.form['c'])
