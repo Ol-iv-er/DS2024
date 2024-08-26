@@ -45,12 +45,12 @@ def results(marks):
 @app.route('/submit', methods =['POST', 'GET'])
 def submit():
     total_score = 0
-    if request.method == 'POST': #Whenever the submit button is pressed this is triggered
-        science = float(request.form['science'])
-        maths = float(request.form['maths'])
-        c = float(request.form['c'])
-        datascience = float(request.form['datascience'])
-        total_score = (science + maths + c + datascience)/4
+    if request.method == 'POST': # Whenever the submit button is pressed this is triggered
+        science_score = float(request.form['science'])
+        math_score = float(request.form['math'])
+        c_score = float(request.form['c'])
+        datascience_score = float(request.form['datascience'])
+        total_score = (science_score + math_score + c_score + datascience_score)/4
     
     return redirect(url_for("success", score = total_score))
 
