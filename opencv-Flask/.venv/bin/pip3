@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/oliver/Desktop/Road to DS in 2024/DS2024/opencv-Flask/.venv/bin/python3.12" "$0" "$@"
+'''exec' "/Users/oliver/Desktop/Road to DS in 2024/DS2024/opencv-Flask/.venv/bin/python" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

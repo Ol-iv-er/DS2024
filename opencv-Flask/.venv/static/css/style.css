@@ -1,0 +1,7 @@
+.centered-div {
+    width: 50%;
+    margin: 0 auto; /* This centers the div horizontally */
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+}
