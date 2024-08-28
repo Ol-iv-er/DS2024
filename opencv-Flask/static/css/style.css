@@ -1,7 +1,29 @@
-.centered-div {
+.center-h1 {
+    text-align: center;
+}
+
+#contents-div {
+    margin: 0 auto; /* This centers the div horizontally */
+}
+
+#left-div {
     width: 50%;
     margin: 0 auto; /* This centers the div horizontally */
+    float: left;
+    background-color: #FFCCCB;
+    padding: 10px;
+    text-align: center;
+}
+
+#right-div {
+    width: 50%;
+    margin: 0 auto; /* This centers the div horizontally */
+    float: right;
     background-color: lightblue;
-    padding: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+#button {
     text-align: center;
 }

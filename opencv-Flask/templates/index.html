@@ -5,9 +5,22 @@
 
 <html>
     <body>
-        <h1>Live Streaming</h1>
-        <div class="centered-div">
-            <img src="{{ url_for('stream_video') }}" width="50%">
+        <h1 class="center-h1">Live Streaming</h1>
+        <div id="contents-div">
+            <div id="left-div">
+                <img src="{{ url_for('stream_video') }}" width="50%">
+            </div>
+            <br>
+s
+            <div id="right-div">
+                <img src="{{ url_for('stream_video') }}" width="50%">
+            </div>
+            <br>
+            <div id="button">
+                <form action="submit" method="post">
+                    <input type="submit" value="flip">
+                </form>
+            </div>
         </div>
 
     </body>

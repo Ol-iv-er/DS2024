@@ -5,6 +5,7 @@ import cv2
 
 app: Flask = Flask(__name__)
 camera: cv2 = cv2.VideoCapture(0)
+
 def generate_frames():
     reading_frames = True
     while reading_frames:
@@ -12,7 +13,7 @@ def generate_frames():
         frame_success, frames = camera.read()
 
         if not frame_success:
-            break
+            return "Failed to read from camera."
         else:
             ret, buffer = cv2.imencode('.jpeg', frames)
             frames = buffer.tobytes()
