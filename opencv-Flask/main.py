@@ -6,6 +6,15 @@ import cv2
 app: Flask = Flask(__name__)
 camera: cv2 = cv2.VideoCapture(0)
 
+def gen_detect_frames():
+    while True:
+        success, frames = camera.read()
+        if not success:
+            break
+        else:
+            dectector = cv2.CascadeClassifier("Haarcascades/haarcascade_frontface_default.xml")
+    pass
+
 def generate_frames(image_flipped = False):
     reading_frames = True
     while reading_frames:
