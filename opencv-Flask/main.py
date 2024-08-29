@@ -8,12 +8,31 @@ camera: cv2 = cv2.VideoCapture(0)
 
 def gen_detect_frames():
     while True:
-        success, frames = camera.read()
+        success, frame = camera.read()
         if not success:
             break
         else:
-            dectector = cv2.CascadeClassifier("Haarcascades/haarcascade_frontface_default.xml")
-    pass
+            dectector = cv2.CascadeClassifier("Haarcascades/haarcascade_frontalface_default.xml")
+            eye_cascade = cv2.CascadeClassifier("Haarcascades/haarcascade_eye.xml")
+            faces = dectector.detectMultiScale(frame, 1.1,7)
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+            # Draw the rectange around the face
+            for (x, y, w, h) in faces:
+                cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
+                roi_gray = gray[y:y+h, x:x+w]
+                roi_color = frame[y:y+h, x:x+w]
+                eyes = eye_cascade.detectMultiScale(roi_gray, 1.1, 3)
+
+                for (ex, ey, ew, eh) in eyes:
+                    cv2.rectangle(roi_color, (ex,ey), (ex+ew, ey+eh), (0, 255, 0), 2)
+
+            _, buffer = cv2.imencode('.jpeg', frame)
+            frame = buffer.tobytes()
+
+            yield(b'--frame\r\n'
+                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
 
 def generate_frames(image_flipped = False):
     reading_frames = True
@@ -50,6 +69,10 @@ def stream_video_flip():
 @app.route('/submit', methods = ['POST', 'GET'])
 def submit():
     return redirect(url_for('stream_video_flip'))
+
+@app.route('/video_dectection')
+def stream_detected_video():
+    return Response(gen_detect_frames(), mimetype = 'multipart/x-mixed-replace; boundry=frame')
 
 if __name__ == '__main__':
     app.run(debug=True)
