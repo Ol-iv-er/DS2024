@@ -4,6 +4,7 @@
 
 #contents-div {
     margin: 0 auto; /* This centers the div horizontally */
+    text-align: center;
 }
 
 #left-div {

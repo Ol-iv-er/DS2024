@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, redirect, Response, url_for
 import cv2
 
 
@@ -34,9 +34,13 @@ def stream_video():
     return Response(generate_frames(), mimetype = 'multipart/x-mixed-replace; boundry=frame')
 
 # when the button is pressed we can just change page
-@app.route('/video/flip')
+@app.route('/video_flip')
 def stream_video_flip():
-    return Response(generate_frames(), mimetype = 'multipart/x-mixed-replace; boundry=frame')
+    return Response(generate_frames(image_flipped = True), mimetype = 'multipart/x-mixed-replace; boundry=frame')
+
+@app.route('/submit', methods = ['POST', 'GET'])
+def submit():
+    return redirect(url_for('stream_video_flip'))
 
 if __name__ == '__main__':
     app.run(debug=True)
