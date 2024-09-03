@@ -24,6 +24,7 @@ def gen_detect_frames():
                 roi_color = frame[y:y+h, x:x+w]
                 eyes = eye_cascade.detectMultiScale(roi_gray, 1.1, 3)
 
+                # Draw the rectangles around the eyes
                 for (ex, ey, ew, eh) in eyes:
                     cv2.rectangle(roi_color, (ex,ey), (ex+ew, ey+eh), (0, 255, 0), 2)
 
@@ -54,24 +55,24 @@ def generate_frames(image_flipped = False):
 
 
 @app.route('/')
-def index():
+def index() -> str:
     return render_template('index.html')
 
 @app.route('/video')
-def stream_video():
+def stream_video() -> Response:
     return Response(generate_frames(), mimetype = 'multipart/x-mixed-replace; boundry=frame')
 
 # when the button is pressed we can just change page
 @app.route('/video_flip')
-def stream_video_flip():
+def stream_video_flip() -> Response:
     return Response(generate_frames(image_flipped = True), mimetype = 'multipart/x-mixed-replace; boundry=frame')
 
 @app.route('/submit', methods = ['POST', 'GET'])
-def submit():
+def submit() -> Response:
     return redirect(url_for('stream_video_flip'))
 
 @app.route('/video_dectection')
-def stream_detected_video():
+def stream_detected_video() -> Response:
     return Response(gen_detect_frames(), mimetype = 'multipart/x-mixed-replace; boundry=frame')
 
 if __name__ == '__main__':
