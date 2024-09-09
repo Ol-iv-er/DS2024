@@ -32,3 +32,4 @@
 1. Descriptive Statistics: Consist of organizing and summarzing data
 
 2. Inferential Statistics: Technique where we use the data that we have collected/measured to form conclusions.
+
